@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.ibm.kafkastream.model.OrderInfoEventDTO;
+import com.ibm.kafkastream.model.OrderReservedStatusDTO;
 import com.ibm.kafkastream.model.ProductListenerDTO;
-import com.ibm.kafkastream.model.ProductReservedStatusDTO;
-import com.ibm.kafkastream.service.ProductReservationService;
+import com.ibm.kafkastream.service.OrderReservationService;
+
 
 
 
@@ -24,14 +25,14 @@ import io.swagger.annotations.ApiOperation;
 public class ProductReservedController {
 	
 	@Autowired
-	ProductReservationService orderOrchestrationService;
+	OrderReservationService orderReservationService;
 	
 	@PostMapping("/")
-	@ApiOperation("This will reserve product entity")
-	public ResponseEntity<ProductReservedStatusDTO> order(@RequestBody ProductListenerDTO dto) {
+	@ApiOperation("This will reserve products under Order entity")
+	public ResponseEntity<OrderReservedStatusDTO> order(@RequestBody OrderInfoEventDTO dto) {
 		
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(orderOrchestrationService.create(dto));
+		return ResponseEntity.status(HttpStatus.CREATED).body(orderReservationService.create(dto));
 	}
 
 }

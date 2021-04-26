@@ -1,15 +1,20 @@
 package com.ibm.kafkastream.model;
 
+import java.util.List;
+
+import com.ibm.kafkastream.model.ProductDTO;
+
 // oms-product-status topic
 
-public class ProductReservedStatusDTO {
+public class OrderReservedStatusDTO {
 
 	
 	 	private Long orderNo;
 	 	private Long customerNo;
 	    private String productStatus; // RESERVED or  REJECTED 
 	    
-	    public Long getOrderNo() {
+	    
+	 	public Long getOrderNo() {
 			return orderNo;
 		}
 		public void setOrderNo(Long orderNo) {
