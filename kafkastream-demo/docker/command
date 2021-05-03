@@ -1,0 +1,8 @@
+docker build –t rb4docker/zenith-om-order-reservation:v1.0 .
+docker login --username=rb4docker
+Password:rbmydocker
+docker push rb4docker/zenith-om-order-reservation:v1.0
+
+
+
+==================
