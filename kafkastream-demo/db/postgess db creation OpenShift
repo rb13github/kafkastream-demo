@@ -1,0 +1,39 @@
+to connect application running  namespace A with the postgres DB(pod) running on name space B,
+use following url jdbc:postgresql://<servicename of postgres db pod>.<names of postgress pod>.svc.cluster.local:5432/<db name to connect>
+
+jdbc:postgresql://postgre.zenith-cis-app.svc.cluster.local:5432/zenithomdb
+ 
+
+
+=======================
+post gress db depolyment 
+
+Option 2: Team can directly deploy PostgreSQL DB container in the cluster with minimal resource utilization
+1.	oc login
+2.	oc project <YOUR_PROJECT_NAME>
+3.	Create Postgre template in your project 
+Note: Refer only the attached templates for postgre based deployments
+	oc create -f postgresql-persistent.yaml (Attached below)
+
+4.	Check Template:
+oc get templates -n <project namespace>
+5.	Deploy Postgre database - Persistent Template (BLOCK STORAGE)
+6.	oc new-app -name=postgre --template=postgresql-persistent-hackathon -p DATABASE_SERVICE_NAME=postgre -p POSTGRESQL_USER=root -p POSTGRESQL_PASSWORD=root -p POSTGRESQL_DATABASE=zenithomdb
+    -n <project namespace>
+
+===================
+
+oc login --token=tSC7MfzI3MfijC53mOshVbgUMUfGg3lfjxrWPt1qxGQ --server=https://c100-e.eu-de.containers.cloud.ibm.com:30421
+
+
+==
+
+PS C:\Users\RITESHBHONDWE> oc get pods
+NAME                                 READY     STATUS      RESTARTS   AGE
+healthcare-comp-rb-95894bb59-hq7lz   1/1       Running     0          126m
+postgres-1-deploy                    0/1       Completed   0          34h
+postgres-1-nsmxj                     1/1       Running     0          34h
+PS C:\Users\RITESHBHONDWE> oc rsh postgres-1-nsmxj
+sh-4.2$ ps x
+
+sh-4.2$ psql healthmgmtdb root

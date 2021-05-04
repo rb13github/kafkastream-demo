@@ -2,7 +2,9 @@ FROM openjdk:latest
 ENV DB_URL = jdbc:postgresql://postgre:5432/zenithomdb
 ENV DB_USER = root
 ENV DB_PASSWORD = root
-ENV KAFKA_URL = localhost:9092
+
+ENV KAFKA_BOOTSTRAP_URL = localhost:9092
+ENV KAFKA_BROKERS_URL = localhost:9092
 ENV KAFKA_TOPIC_OMS_PRODUCT_STATUS = oms-product-status
 ENV KAFKA_TOPIC_OMS_RESERVE_EVENT = oms-reserve-event
 
