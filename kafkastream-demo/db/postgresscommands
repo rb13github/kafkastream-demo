@@ -14,7 +14,7 @@ Access the PostgreSQL server from psql with a specific user:
 
 =================
 select id,trainee_name,description,usecase_id,tnc_acceptance,level,request_date,trainee_id from catalogue.t_subscription; 
-select id,trainee_name,category_id, from catalogue.t_subscription;
+select id,trainee_name,category_id,expiry_date,status from catalogue.t_subscription;
 
 
 
